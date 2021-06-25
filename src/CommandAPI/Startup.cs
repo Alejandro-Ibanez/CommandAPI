@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using AutoMapper;
 
 namespace CommandAPI
 {
@@ -35,6 +36,7 @@ namespace CommandAPI
             (opt => opt.UseNpgsql(builder.ConnectionString));
             services.AddControllers();
             //services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
         }
